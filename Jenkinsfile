@@ -13,19 +13,23 @@ pipeline {
         stage('Setup Environment') {
             steps {
                 echo 'Creating Python virtual environment'
-
                 bat 'python -m venv .venv'
 
-                echo 'Installing project dependencies'
-
+                echo 'Installing dependencies'
                 bat '.venv\\Scripts\\python -m pip install -r requirements.txt'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Running FastAPI automated tests'
+                bat '.venv\\Scripts\\python -m pytest -v'
             }
         }
 
         stage('Build') {
             steps {
-                echo 'Python environment is ready'
-
+                echo 'Application tests completed'
                 bat '.venv\\Scripts\\python --version'
             }
         }
