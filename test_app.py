@@ -8,4 +8,4 @@ def test_homepage():
     response = client.get("/")
 
     assert response.status_code == 200
-    assert "Hello from Dobby!!" in response.text
+    assert "Hello from Hermione!!" in response.text
