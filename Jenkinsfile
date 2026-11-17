@@ -1,15 +1,7 @@
-
 pipeline {
     agent any
 
     stages {
-
-        stage('Checkout') {
-            steps {
-                echo 'Checking out source code'
-                checkout scm
-            }
-        }
 
         stage('Verify') {
             steps {
@@ -18,10 +10,23 @@ pipeline {
             }
         }
 
+        stage('Setup Environment') {
+            steps {
+                echo 'Creating Python virtual environment'
+
+                bat 'python -m venv .venv'
+
+                echo 'Installing project dependencies'
+
+                bat '.venv\\Scripts\\python -m pip install -r requirements.txt'
+            }
+        }
+
         stage('Build') {
             steps {
-                echo 'Preparing FastAPI application'
-                bat 'python --version'
+                echo 'Python environment is ready'
+
+                bat '.venv\\Scripts\\python --version'
             }
         }
     }
