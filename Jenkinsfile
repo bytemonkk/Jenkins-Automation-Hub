@@ -36,13 +36,9 @@ pipeline {
 
         stage('Docker Connectivity') {
             steps {
-                echo 'Checking Docker CLI availability'
+                echo 'Checking Docker CLI using its absolute path'
 
-                bat 'where docker'
-
-                echo 'Checking Docker Engine connection'
-
-                bat 'docker version'
+                bat '"C:\\Users\\MANOJ KUMAR SUNKARA\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" version'
             }
         }
     }
