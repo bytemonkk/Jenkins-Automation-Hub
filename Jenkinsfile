@@ -33,5 +33,17 @@ pipeline {
                 bat '.venv\\Scripts\\python --version'
             }
         }
+
+        stage('Docker Connectivity') {
+            steps {
+                echo 'Checking Docker CLI availability'
+
+                bat 'where docker'
+
+                echo 'Checking Docker Engine connection'
+
+                bat 'docker version'
+            }
+        }
     }
 }
