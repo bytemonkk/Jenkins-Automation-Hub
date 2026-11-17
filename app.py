@@ -11,7 +11,7 @@ def home():
             <title>Jenkins Automation Hub</title>
         </head>
         <body>
-            <h1>Hello from Dobby!!</h1>
+            <h1>Hello from Hermione!!</h1>
             <p>My first Jenkins CI/CD application.</p>
         </body>
     </html>
